@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeresePC - 我的世界启动器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+       
+        .launcher {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 40px 60px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+
+        
+        .icon {
+            width:280px;
+            height: 150px;
+            margin: 5  1px;
+            background: url(file:///C:/Users/srs16/Downloads/1781358305425..png) no-repeat center;
+            background-size: contain;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .desc {
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .launch-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7c3aed, #311050);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 19px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.7s;
+            margin-bottom:12px;
+        }
+        .quark-btn {
+            width: 100%;
+            background:linear-gradient(135deg, hsl(214, 98%, 43%), #060452);
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 20px;
+            font-size: 19px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.7s;
+        }
+        .quark-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(33, 181, 243, 0.4);
+        }
+        .launch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #7c3aed, #a855f7);
+            width: 0;
+            animation: load 2s forwards;
+        }
+
+        @keyframes load {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .status {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #a0a0a0;
+        }
+
+        .tip {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+       
+        .features {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2d2d2d;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #7c3aed;
+            transform: translateY(-4px);
+        }
+
+        .feature-screenshot {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .feature-info {
+            padding: 20px;
+        }
+
+        .feature-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .feature-info p {
+            color: #a0a0a0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="launcher">
+        <div class="icon"></div>
+        <h1>VeresePC</h1>
+        <p class="desc">  我的世界启动器</p>
+        <button class="launch-btn" id="launchBtn">Github下载启动器
+        </button>
+        <button class="quark-btn" id="quarkBtn">夸克网盘下载</button>
+        <div class="loading" id="loading">
+            <div class="loading-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+        <p class="tip">点击下载，跳转github或夸克网盘</p>
+    </div>
+    <div class="features">
+        <h2>核心功能</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <img src="https://aka.doubaocdn.com/s/8W8g1wavO8" alt="方便管理账号" class="feature-screenshot">
+                <div class="feature-info">
+                    <h3>方便管理账号</h3>
+                    <p>支持微软登录、外置登录与离线账户，多账号一键切换，轻松管理游戏身份。</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img src="https://aka.doubaocdn.com/s/LW3j1wavO8" alt="一键联机" class="feature-screenshot">
+                <div class="feature-info">
+                    <h3>一键联机</h3>
+                    <p>基于 P2P 虚拟组网技术，创建房间即可与好友远程联机游玩。</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img src="https://aka.doubaocdn.com/s/DBzR1wavO8" alt="方便下载资源" class="feature-screenshot">
+                <div class="feature-info">
+                    <h3>方便下载资源</h3>
+                    <p>全版本游戏核心一键下载，支持正式版、快照版，获取你需要的游戏资源。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const launchBtn = document.getElementById('launchBtn');
+    launchBtn.addEventListener('click', () => {
+        window.open('https://github.com/doujie081231/versePc/releases','_blank');
+    });
+    const quarkBtn = document.getElementById('quarkBtn');
+    quarkBtn.addEventListener('click', () => {
+        window.open('https://pan.quark.cn/s/02655f4bf804#/list/share/41277f3f046449beb1b4888ef3a96099','_blank');
+    });
+</script>
+</body>
+</html>
+<h1>爱发电https://ifdian.net/a/versejava?tab=home</h1>
